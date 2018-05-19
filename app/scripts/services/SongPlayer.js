@@ -63,11 +63,14 @@
 
     SongPlayer.currentSong = null;
 
-    /**
-    * @desc Current playback time (in seconds) of currently playing song
-    * @type {Number}
-    */
+    /* @desc Current playback time (in seconds) of currently playing song
+       @type {Number} */
     SongPlayer.currentTime = null;
+
+    /* @desc Current song volume with a value between 0 and 100
+       @type {Number} */
+    SongPlayer.volume = 75;
+
 
     /* @function SongPlayer.play(song)
        @desc resume playback of a paused song or otherwise start playback from the beginning. sets song.playing to true
@@ -132,6 +135,12 @@
         currentBuzzObject.setTime(time);
       }
     };
+
+    SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(volume);
+            }
+        }
 
     return SongPlayer;
   }
